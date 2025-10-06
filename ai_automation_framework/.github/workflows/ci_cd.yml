@@ -26,6 +26,7 @@ jobs:
         pip install openpyxl pytest-html
 
     - name: Run Pytest - RunMode=Yes + HTML report
+      working-directory: ai_automation_framework
       run: |
         rm -rf ai_automation_framework/reports
         mkdir -p ai_automation_framework/reports
