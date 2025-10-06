@@ -27,6 +27,7 @@ jobs:
 
     - name: Run Pytest - RunMode=Yes + HTML report
       run: |
+        rm -rf ai_automation_framework/reports
         mkdir -p ai_automation_framework/reports
         pytest ai_automation_framework/tests \
                --disable-warnings \
