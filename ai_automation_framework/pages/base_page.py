@@ -1,4 +1,4 @@
-from selenium.webdriver.common.by import By
+# pages/base_page.py
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -8,9 +8,14 @@ class BasePage:
         self.wait = WebDriverWait(driver, 10)
 
     def click(self, locator):
-        self.wait.until(EC.element_to_be_clickable((By.ID, locator))).click()
+        element = self.wait.until(EC.element_to_be_clickable(locator))
+        element.click()
 
     def enter_text(self, locator, text):
-        elem = self.wait.until(EC.visibility_of_element_located((By.ID, locator)))
-        elem.clear()
-        elem.send_keys(text)
+        element = self.wait.until(EC.visibility_of_element_located(locator))
+        element.clear()
+        element.send_keys(text)
+
+    def get_text(self, locator):
+        element = self.wait.until(EC.visibility_of_element_located(locator))
+        return element.text
