@@ -27,9 +27,9 @@ jobs:
 
     - name: Run Pytest - RunMode=Yes + HTML report
       run: |
-        mkdir -p reports
-        pytest --disable-warnings \
-               --html=reports/report.html \
+        mkdir -p ai_automation_framework/reports
+        pytest ai_automation_framework/tests --disable-warnings \
+               --html=ai_automation_framework/reports/report.html \
                --self-contained-html \
                -o log_cli_level=INFO \
                -k "RunModeYes"
@@ -38,4 +38,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pytest-report
-        path: reports/report.html
+        path: ai_automation_framework/reports/report.html
