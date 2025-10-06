@@ -1,15 +1,15 @@
 import pytest
 from pages.base_page import BasePage
-from locators.locators import LoginLocators, DashboardLocators
+from locators.locators import LoginLocators
 from utils.excel_reader import read_test_cases
 
-test_data = read_test_cases("../test_cases.xlsx")
+test_data = read_test_cases("test_cases.xlsx")
 module_tests = [tc for tc in test_data if tc["Module"] == "Model Integration"]
 
 @pytest.mark.parametrize("tc", module_tests)
 def test_model_integration(tc, driver):
     page = BasePage(driver)
-    driver.get("https://example.com")
+    driver.get("https://ai.com")
     page.enter_text(LoginLocators.USERNAME, "testuser")
     page.enter_text(LoginLocators.PASSWORD, "password")
     page.click(LoginLocators.LOGIN_BTN)
@@ -19,8 +19,3 @@ def test_model_integration(tc, driver):
         if "Trigger" in step:
             print(f"Triggering action: {step}")
         elif "Check" in step or "Validate" in step:
-            print(f"Validating: {step}")
-        else:
-            print(f"Executing: {step}")
-    
-    assert True
