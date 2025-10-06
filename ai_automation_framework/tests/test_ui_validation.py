@@ -3,7 +3,7 @@ from pages.base_page import BasePage
 from locators.locators import LoginLocators
 from utils.excel_reader import read_test_cases
 
-test_data = read_test_cases("test_cases.xlsx")
+test_data = read_test_cases("test_case.xlsx")
 module_tests = [tc for tc in test_data if tc["Module"] == "UX/UI Validation"]
 
 @pytest.mark.parametrize("tc", module_tests)
