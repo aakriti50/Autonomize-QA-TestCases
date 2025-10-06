@@ -27,6 +27,7 @@ jobs:
 
     - name: Run Pytest - RunMode=Yes + HTML report
       run: |
+        mkdir -p reports
         pytest --disable-warnings \
                --html=reports/report.html \
                --self-contained-html \
@@ -34,7 +35,7 @@ jobs:
                -k "RunModeYes"
 
     - name: Upload HTML report as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pytest-report
         path: reports/report.html
